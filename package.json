@@ -1,0 +1,30 @@
+{
+  "name": "teste-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjunor/teste-fullstack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hjunor/teste-fullstack/issues"
+  },
+  "homepage": "https://github.com/hjunor/teste-fullstack#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.20",
+    "uuid": "^8.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
