@@ -3,6 +3,10 @@ const schema = mongoose.Schema;
 
 const category = new schema(
   {
+    _id: {
+      type: String,
+      default: uuid(),
+    },
     titulo: {
       trim: true,
       createIndexes: true,

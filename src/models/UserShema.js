@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
+const uuid = require('uuid/v4');
 
-const users = new mongoose.Schema(
+const userShema = new mongoose.Schema(
   {
-    nome: {
+    _id: {
+      type: String,
+      default: uuid(),
+    },
+    name: {
       trim: true,
       createIndexes: true,
       required: true,
@@ -23,4 +28,4 @@ const users = new mongoose.Schema(
   { versionKey: false }
 );
 
-module.exports = mongoose.model('Users', users);
+module.exports = mongoose.model('Users', userShema);

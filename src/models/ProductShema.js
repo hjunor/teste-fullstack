@@ -3,6 +3,10 @@ const schema = mongoose.Schema;
 
 const produto_model = new schema(
   {
+    _id: {
+      type: String,
+      default: uuid(),
+    },
     name: {
       type: String,
       required: true,
