@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+const uuid = require('uuid');
 
 const produto_model = new schema(
   {
     _id: {
       type: String,
-      default: uuid(),
+      default: uuid.v5(),
     },
     name: {
       type: String,

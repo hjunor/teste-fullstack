@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const uuid = require('uuid/v4');
+const uuid = require('uuid');
 
 const userShema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: uuid(),
+      default: uuid.v5(),
     },
     name: {
       trim: true,
