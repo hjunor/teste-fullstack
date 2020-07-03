@@ -4,7 +4,7 @@ class UsersController {
   async store(request, response, next) {
     const users = await UserShema.find();
 
-    response.json({ users });
+    return response.json({ users });
   }
 
   async create(request, response) {
