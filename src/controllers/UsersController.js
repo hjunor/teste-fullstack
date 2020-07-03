@@ -1,32 +1,41 @@
 const UserShema = require('../models/UserShema');
 
 class UsersController {
+  async store(request, response, next) {
+    const users = await UserShema.find();
+
+    response.json({ users });
+  }
+
   async create(request, response) {
     const { name, email, password } = request.body;
 
-    const user = await UserShema.create({
-      name,
-      email,
-      password,
-    }).catch(async () => {
-      const saida = await UserShema.find({
-        email: { $in: [email.toLowerCase()] },
+    function validateEmail(email) {
+      const regex = /\S+@\S+\.\S+/;
+      return regex.test(String(email).toLowerCase());
+    }
+
+    const result = validateEmail(email);
+
+    if (!result) {
+      return response.json({ user: 'Email invalido' });
+    }
+
+    UserShema.find({
+      email: { $in: [email.toLowerCase()] },
+    })
+      .then(async (user) => {
+        const newUser = await UserShema.create({
+          name,
+          email,
+          password,
+        });
+
+        return response.json({ message: 'Usuario Cadastrado com sucesso' });
+      })
+      .catch((error) => {
+        return response.json({ message: 'Usuario Exixtente na Base de dados' });
       });
-
-      if (saida.length > 0) {
-        if (saida[0].email || saida === email.toLowerCase()) {
-          return response.status(401).send({
-            message: ` email ja cadastrado`,
-          });
-        }
-      }
-
-      return response.status(404).send({
-        message: 'error nos parametros',
-      });
-    });
-
-    return response.json({ message: 'usuário cadastrado com sucesso' });
   }
 }
 
