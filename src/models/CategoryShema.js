@@ -1,36 +1,22 @@
 const mongoose = require('mongoose');
 const uuid = require('uuid');
 
-const CategoryShema = new schema(
+const CategoryShema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: uuid.v5(),
+      default: true,
     },
-    titulo: {
-      trim: true,
-      createIndexes: true,
+    title: {
       required: true,
       type: String,
     },
-    descricao: {
+    description: {
       type: String,
       required: true,
-    },
-    dataCriacao: {
-      type: Date,
-      default: Date.now,
     },
   },
-  { versionKey: false }
+  { timestamps: true }
 );
-
-CategoryShema.pre('save', (next) => {
-  let agora = new Date();
-  if (!this.dataCriacao) {
-    this.dataCriacao = agora;
-    next();
-  }
-});
 
 module.exports = mongoose.model('Category', CategoryShema);
