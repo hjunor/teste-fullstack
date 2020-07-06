@@ -11,9 +11,11 @@ class CategoryController {
 
     return response.json(category);
   }
-  // async store(response, requeste) {
-  //   response.json({ massege: 'ok' });
-  // }
+  async store(response, requeste) {
+    const category = await CategoryShema.find();
+
+    response.json(category);
+  }
   // async update(response, requeste) {
   //   response.json({ massege: 'ok' });
   // }
