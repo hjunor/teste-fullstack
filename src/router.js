@@ -14,5 +14,6 @@ routes.post('/user', UsersController.create);
 routes.get('/user', auth, UsersController.store);
 
 routes.post('/category', auth, CategoryController.create);
+routes.get('/category', auth, CategoryController.store);
 
 module.exports = routes;
