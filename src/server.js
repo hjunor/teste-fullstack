@@ -7,7 +7,7 @@ const routes = require('./router');
 const app = express();
 // app.use(bodyParser.urlencoded());
 app.use(express.json());
-
+//Ok
 app.use(routes);
 
 app.listen(3333);
