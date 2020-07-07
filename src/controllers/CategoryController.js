@@ -33,7 +33,22 @@ class CategoryController {
     response.json(category);
   }
 
-  async update(requeste, response) {
+  async updateDesc(requeste, response) {
+    const { id } = requeste.params;
+
+    const { description } = requeste.body;
+
+    const getDescription = await CategoryShema.findByIdAndUpdate(
+      id,
+      {
+        description: description,
+      },
+      { new: true }
+    );
+
+    return response.json(getDescription);
+  }
+  async updateTitle(requeste, response) {
     const { id } = requeste.params;
 
     const { title } = requeste.body;
@@ -52,7 +67,7 @@ class CategoryController {
       });
     }
 
-    response.json(getCategory);
+    return response.json(getCategory);
   }
   async delete(requeste, response) {
     response.json({ massege: 'ok' });
