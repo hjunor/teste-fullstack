@@ -2,9 +2,13 @@ const UserShema = require('../models/UserShema');
 
 class UsersController {
   async store(request, response, next) {
-    const users = await UserShema.find();
+    const usersDb = await UserShema.find();
 
-    return response.json({ users });
+    const users = usersDb.map((user) => {
+      return { id: user._id, name: user.name };
+    });
+
+    return response.json(users);
   }
 
   async create(request, response) {
