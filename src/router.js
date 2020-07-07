@@ -15,7 +15,8 @@ routes.get('/user', auth, UsersController.store);
 routes.post('/category', auth, CategoryController.create);
 routes.get('/category', auth, CategoryController.storeAll);
 routes.get('/category/:id', auth, CategoryController.store);
-routes.post('/category/update/:id', auth, CategoryController.update);
+routes.post('/category/title/:id', auth, CategoryController.updateTitle);
+routes.post('/category/description/:id', auth, CategoryController.updateDesc);
 routes.get('/category/delete/:id', auth, CategoryController.delete);
 
 module.exports = routes;
