@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const uuid = require('uuid');
 
 const CategoryShema = new mongoose.Schema(
   {
