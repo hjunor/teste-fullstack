@@ -8,6 +8,7 @@ const option = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+  useFindAndModify: false,
 };
 
 mongoose.connect(URL, option, (erro) => {
