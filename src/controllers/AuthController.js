@@ -28,10 +28,8 @@ class AuthController {
     delete user.password;
 
     response.json({
-      user: {
-        id: user.id,
-        email: user.email,
-      },
+      id: user.id,
+      email: user.email,
       token,
     });
   }
