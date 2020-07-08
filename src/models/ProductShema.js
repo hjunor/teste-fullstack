@@ -5,7 +5,7 @@ const produto_model = new schema(
   {
     _id: {
       type: String,
-      default: uuid.v5(),
+      default: uuid.v4(),
     },
     name: {
       type: String,

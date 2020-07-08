@@ -1,5 +1,6 @@
 const CategoryShema = require('../models/CategoryShema');
 class CategoryController {
+
   async create(requeste, response) {
     const { title, description } = requeste.body;
 
