@@ -5,12 +5,14 @@ const BrendShema = new mongoose.Schema({
 
   _id: {
     type: String,
-    default: true
+    default: uuid.v4()
   },
   name: {
     type: String,
     require: true
-
-  }
+  },
 
 })
+
+
+module.exports = mongoose.model('Brend', BrendShema);
