@@ -22,8 +22,8 @@ routes.get('/category/delete/:id', auth, CategoryController.delete);
 
 routes.get('/brend', BrenController.store);
 routes.post('/brend', BrenController.create);
-routes.post('/brend/update', BrenController.update);
-routes.post('/brend/delete', BrenController.delete);
+routes.post('/brend/update/:id', BrenController.update);
+routes.post('/brend/delete/:id', BrenController.delete);
 
 
 

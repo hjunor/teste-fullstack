@@ -1,21 +1,45 @@
 const Brendshema = require('../models/BrendShema')
 
 class BrendController {
-  store(request, response) {
+  async store(request, response) {
 
-    return response.json({ status: 'ok' })
+    const getBrend = await Brendshema.find()
 
-  }
-  create(request, response) {
-    return response.json({ status: 'ok' })
-  }
-  delete(request, response) {
-
-    return response.json({ status: 'ok' })
+    return response.json(getBrend)
 
   }
-  update(request, response) {
+  async create(request, response) {
+
+    const { name } = request.body;
+
+    const getBrend = await Brendshema.create({
+      name
+    })
+
     return response.json({ status: 'ok' })
+  }
+  async delete(request, response) {
+
+    const { id } = request.params;
+
+    const getBrend = await Brendshema.findByIdAndDelete({
+      _id: id
+    })
+    return response.json(getBrend)
+
+  }
+  async update(request, response) {
+    const { id } = request.params;
+    const { name } = request.body;
+
+    const getBrend = await Brendshema.findByIdAndUpdate(
+      id,
+      {
+        name: name,
+      },
+      { new: true }
+    );
+    return response.json(getBrend)
 
   }
 }
