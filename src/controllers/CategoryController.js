@@ -70,7 +70,12 @@ class CategoryController {
     return response.json(getCategory);
   }
   async delete(requeste, response) {
-    response.json({ massege: 'ok' });
+    const { id } = requeste.params;
+
+    const getCategory = await CategoryShema.findByIdAndDelete({
+      _id: id,
+    });
+    response.json(getCategory);
   }
 }
 
