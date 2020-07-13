@@ -32,20 +32,13 @@ const produto_model = new schema(
         required: true,
       },
     ],
-    dataCriacao: {
-      type: Date,
-      default: Date.now,
+
+    files: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'File',
     },
   },
-  { versionKey: false }
+  { timestamps: true }
 );
-
-produto_model.pre('save', (next) => {
-  let agora = new Date();
-  if (!this.dataCriacao) {
-    this.dataCriacao = agora;
-    next();
-  }
-});
 
 module.exports = mongoose.model('Produto', produto_model);
