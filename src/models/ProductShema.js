@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const uuid = require('uuid');
 
-const produto_model = new schema(
+const productSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
@@ -41,4 +41,4 @@ const produto_model = new schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Produto', produto_model);
+module.exports = mongoose.model('Produto', productSchema);
